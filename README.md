@@ -45,8 +45,8 @@ the flows step by step.
 ## Getting started
 
 ```bash
-git clone https://github.com/your-username/auth-protocols-playground.git
-cd auth-protocols-playground
+git clone https://github.com/your-username/token-smith.git
+cd token-smith
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt

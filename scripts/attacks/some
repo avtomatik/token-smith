@@ -1,0 +1,77 @@
+# 3️⃣ ATTACK SCENARIOS (THIS IS THE GOLD)
+
+Create a folder: `scripts/attacks/`
+
+---
+
+## 🔴 Attack 1: Expired token
+
+Change `exp` to past time.
+
+Expected result:
+
+```json
+401 Token expired
+```
+
+Lesson:
+
+> Stateless tokens die silently.
+
+---
+
+## 🔴 Attack 2: Wrong audience
+
+Issue token with:
+
+```python
+"aud": "other-api"
+```
+
+Lesson:
+
+> Audience prevents token reuse across services.
+
+---
+
+## 🔴 Attack 3: Tampered JWT
+
+Manually edit payload in jwt.io.
+
+Lesson:
+
+> Signature ≠ encryption
+> Integrity is everything.
+
+---
+
+## 🔴 Attack 4: SAML replay
+
+Re-POST the same SAMLResponse.
+
+Lesson:
+
+> SAML needs replay protection (IDs + cache).
+
+---
+
+## 🔴 Attack 5: Fake IdP
+
+Change issuer to `evil-idp`.
+
+Lesson:
+
+> Trust is a configuration problem, not a crypto problem.
+
+---
+
+# 4️⃣ Running everything with `uv`
+
+```bash
+uv init
+uv add fastapi uvicorn pyjwt python-multipart
+uv run uvicorn app.main:app --reload
+```
+
+---
+
